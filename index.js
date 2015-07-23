@@ -19,7 +19,7 @@
     if (services.indexOf(name) > -1) {
       return;
     }
-    services.push([name, {}]);
+    services.push([name, function(){}]);
     return name;
   };
   transform = function(name){
@@ -42,16 +42,11 @@
     }
   };
   object = function(name, object){
-    var pub, item, results$ = [];
+    var pub;
     pub = transform(
     register(
     name));
-    for (item in object) {
-      if (object.hasOwnProperty(item)) {
-        results$.push(pub[item] = object[item]);
-      }
-    }
-    return results$;
+    return pub.prototype = object;
   };
   xonom = {};
   x$ = xonom;

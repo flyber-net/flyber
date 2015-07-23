@@ -16,7 +16,7 @@ services = []
 
 register = (name)->
   return if services.index-of(name)>-1
-  services.push [name, {}]
+  services.push [name, ->]
   name
 
 transform = (name)->
@@ -31,9 +31,10 @@ const load = (any)->
 const object = (name, object)->
    const pub =
       name |> register |> transform
-   for item of object
-    if object.has-own-property item
-      pub[item] = object[item]
+   pub.prototype = object
+   #for item of object
+   #  if object.has-own-property item
+   #      pub[item] = object[item]
 
 const xonom =  {}
 xonom
