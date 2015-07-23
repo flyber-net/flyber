@@ -44,24 +44,6 @@ const object = (name, object)->
    clone object, pub
 
 
-class Promise
-  ->
-    @callbacks= []
-    @ready =  no
-  success: (result) ->
-      console.log \result, result, @callbacks
-      if @callbacks.length > 0
-         const func = @callbacks.0
-         @callbacks.splice(0, 1)
-         console.log func
-         func result
-      @ready = yes
-      @result = result
-  on-success: (callback)->
-    if @ready
-       callback @result
-    else
-       @callbacks.push callback
 
 
 const xonom =  {}
