@@ -53,8 +53,10 @@ class Promise
       @ready = yes
       @result = result
   on-success: (callback)->
+    console.log \progress, @
     if @ready
        callback @result
+    
     @callbacks.push callback
 
 
