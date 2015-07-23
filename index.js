@@ -113,17 +113,20 @@
       x$ = result;
       x$.run = function(f){
         return done(function(){
-          return console.log('success');
+          console.log('success');
+          return xonom;
         });
       };
       x$.service = function(name, func){
         return done(function(){
-          return console.log('success');
+          console.log('success');
+          return xonom;
         });
       };
       x$.object = function(name, o){
         return done(function(){
-          return console.log('success');
+          console.log('success');
+          return xonom;
         });
       };
       x$.require = function(path){
