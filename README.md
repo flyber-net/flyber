@@ -1,4 +1,4 @@
-# grunt-xonom
+# xonom
 Service model provider for nodejs
 
 ##Install
@@ -47,7 +47,7 @@ xonom.object('obj', { common: 'object' });
 
 xonom.func(function(obj) {
 
-//you can use 'obj' here 
+  console.log(obj) //=> { common: 'object' }
 
 })
 ```
