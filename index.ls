@@ -69,7 +69,6 @@ xonom
         if typeof! result?on-success is \Function
           done = (func)->
               result.on-success ->
-                 result.callbacks.length = 0
                  func!
           
           console.log result

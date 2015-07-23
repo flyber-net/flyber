@@ -105,7 +105,6 @@
     if (toString$.call(result != null ? result.onSuccess : void 8).slice(8, -1) === 'Function') {
       done = function(func){
         return result.onSuccess(function(){
-          result.callbacks.length = 0;
           return func();
         });
       };
