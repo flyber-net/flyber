@@ -14,9 +14,15 @@ params = (func)->
 
 services = []
 
+const create-object = ->
+    const func = -> 
+      @prototype.__invoke?!
+    func
+     
+
 register = (name)->
   return if services.index-of(name)>-1
-  services.push [name, {}]
+  services.push [name, create-object!]
   name
 
 transform = (name)->
@@ -31,6 +37,8 @@ const load = (any)->
 const object = (name, object)->
    const pub =
       name |> register |> transform
+   if typeof object is \function
+      pub.prototype.__invoke = object
    for item of object
     if object.has-own-property item
       pub.prototype[item] = object[item]
