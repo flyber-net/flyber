@@ -79,8 +79,7 @@ xonom
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
           result  
-        else
-          xonom
+        xonom
  ..service = (name, func)->
     func |> load |> object name, _
     xonom
