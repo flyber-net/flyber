@@ -52,8 +52,7 @@
   xonom = {};
   x$ = xonom;
   x$.func = function(f){
-    load(f);
-    return xonom;
+    return load(f);
   };
   x$.file = function(path){
     load(

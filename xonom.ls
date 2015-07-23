@@ -37,7 +37,6 @@ const xonom =  {}
 xonom
  ..func = (f)->
     load f
-    xonom
  ..file = (path)->
     path |> require |> load
     xonom
