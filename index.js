@@ -78,9 +78,12 @@
       this.ready = false;
     }
     prototype.success = function(result){
+      var func;
       console.log('result', result, this.callbacks);
       if (this.callbacks.length > 0) {
-        this.callbacks.splice(0, 1)(result);
+        func = this.callbacks.splice(0, 1);
+        console.log(func);
+        func(result);
       }
       this.ready = true;
       return this.result = result;
