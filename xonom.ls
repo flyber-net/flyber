@@ -33,13 +33,20 @@ const object = (name, object)->
     if object.has-own-property item
       pub[item] = object[item]
 
-const xonom = 
- func: load
- file: (path)->
-     path |> require |> load
- service: (name, func)->
+const xonom =  {}
+xonom
+ ..func = (f)->
+    load f
+    xonom
+ ..file = (path)->
+    path |> require |> load
+    xonom
+ ..service = (name, func)->
     func |> load |> object name, _
- object: object
+    xonom
+ ..object = (name, o)->
+    object name, o
+    xonom
 
 object \$xonom, xonom
 
