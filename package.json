@@ -1,4 +1,22 @@
 {
+  "bugs": {
+    "url": "https://github.com/askucher/grunt-xonom/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/askucher/grunt-xonom/blob/master/LICENSE-MIT"
+    }
+  ],
+  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
+  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
+  "directories": {},
+  "maintainers": [],
+  "_npmUser": {
+    "name": "askucher",
+    "email": "a.stegno@gmail.com"
+  },
+  "_npmVersion": "0.1.00",
   "repository": {
     "type": "git",
     "url": "git@github.com:askucher/xonom.git"
@@ -7,51 +25,33 @@
     "name": "Xonom",
     "url": ""
   },
-  "_id": "xonom@0.6.0",
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "node"
-  ],
-  "peerDependencies": {},
-  "devDependencies": {},
-  "dependencies": {
-    "glob": ">0.1"
-  },
-  "_npmVersion": "0.1.00",
-  "_npmUser": {
-    "name": "askucher",
-    "email": "a.stegno@gmail.com"
-  },
-  "maintainers": [],
-  "directories": {},
-  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
-  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/askucher/grunt-xonom/blob/master/LICENSE-MIT"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/askucher/grunt-xonom/issues"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "engines": {
-    "node": ">= 0.8.0"
-  },
   "homepage": "https://github.com/gruntjs/",
-  "subversion": 56,
+  "subversion": 57,
   "uperversion": "0.1",
-  "version": "0.1.56",
+  "version": "0.1.57",
   "description": "Provides clean communication between angular and express",
   "name": "xonom",
   "_from": "xonom@>0.1",
   "dist": {
     "shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
     "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
-  }
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "glob": ">0.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "keywords": [
+    "node"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "_id": "xonom@0.6.0"
 }

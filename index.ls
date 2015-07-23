@@ -49,6 +49,7 @@ class Promise
     @callbacks= []
     @ready =  no
   success: (result) ->
+      console.log \result, result
       @callbacks |> p.each (-> it result)
       @ready = yes
       @result = result
@@ -82,8 +83,6 @@ xonom
                 xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
-          console.log \promis, result
-          result  
           xonom
         else
           xonom

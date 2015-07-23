@@ -78,6 +78,7 @@
       this.ready = false;
     }
     prototype.success = function(result){
+      console.log('result', result);
       p.each(function(it){
         return it(result);
       })(
@@ -130,8 +131,6 @@
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
       };
-      console.log('promis', result);
-      result;
       return xonom;
     } else {
       return xonom;
