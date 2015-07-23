@@ -91,8 +91,5 @@
     return xonom;
   };
   xonom.object('$xonom', xonom);
-  xonom.service('$promise', function(){
-    return new Promise();
-  });
   module.exports = xonom;
 }).call(this);

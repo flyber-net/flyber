@@ -61,8 +61,6 @@ xonom
     xonom
 
 xonom.object \$xonom, xonom
-xonom.service \$promise, ->
-          new Promise!
 
 
 module.exports = xonom
