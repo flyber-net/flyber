@@ -81,7 +81,8 @@
       var func;
       console.log('result', result, this.callbacks);
       if (this.callbacks.length > 0) {
-        func = this.callbacks.splice(0, 1);
+        func = this.callbacks[0];
+        this.callbacks.splice(0, 1);
         console.log(func);
         func(result);
       }

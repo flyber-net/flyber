@@ -51,7 +51,8 @@ class Promise
   success: (result) ->
       console.log \result, result, @callbacks
       if @callbacks.length > 0
-         const func = @callbacks.splice(0, 1)
+         const func = @callbacks.0
+         @callbacks.splice(0, 1)
          console.log func
          func result
       @ready = yes
