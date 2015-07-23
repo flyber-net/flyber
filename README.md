@@ -33,10 +33,11 @@ var func = function ($xonom) {
       }
   });
   
-  $xonom.run(function(myservice) {
+  $xonom.run(function(myservice, config) {
   
       myservice.func1() //==> print1
       myservice.func2() //==> print2
+      console.log(config) //=> { common: 'object' }
   
   });
    
@@ -52,13 +53,6 @@ xonom.object('config', { common: 'object' });
 
 //Apply xonom to function
 xonom.run(func)
-
-
-xonom.run(function(config) {
-
-  console.log(config) //=> { common: 'object' }
-
-});
 
 
 
