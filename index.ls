@@ -89,14 +89,14 @@ xonom
     object name, o
     xonom
 
-
-
-
-module.exports = 
-    xonom
+xonom
       .object \$xonom
       .service \$promise, ->
           new Promise!
+
+
+module.exports = xonom
+    
 
     
         
