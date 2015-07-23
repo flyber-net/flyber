@@ -32,17 +32,17 @@
     services));
   };
   load = function(any){
-    if (toString$.call(any).slice(8, -1) === 'Function') {
-      any.apply(this, p.map(transform)(
+    switch (false) {
+    case toString$.call(any).slice(8, -1) !== 'Function':
+      return any.apply(this, p.map(transform)(
       p.each(register)(
       params(
       any))));
-    }
-    if (toString$.call(any).slice(8, -1) === 'String') {
+    case toString$.call(any).slice(8, -1) !== 'String':
       return load(
       require(
       any));
-    } else {
+    default:
       return any;
     }
   };
