@@ -23,9 +23,9 @@ transform = (name)->
   services |> p.find (.0 is name) |> (.1)
 
 const load = (any)->
-   if typeof any is \function
+   if typeof! any is \Function
      any |> params |> p.each register |> p.map transform |> any.apply @, _
-   if typeof any is \string
+   if typeof! any is \String
      any |> require |> load
    else 
      any
