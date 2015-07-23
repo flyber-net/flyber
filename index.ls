@@ -76,12 +76,15 @@ xonom
             ..run = (f)->
               done ->
                 xonom.run(f)
+              result
             ..service = (name, func)->
               done ->
                 xonom.service(name, func)
+              result
             ..object = (name, o)->
               done ->
                 xonom.object(name, o)
+              result
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
           result

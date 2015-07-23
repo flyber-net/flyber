@@ -114,19 +114,22 @@
       console.log(result);
       x$ = result;
       x$.run = function(f){
-        return done(function(){
+        done(function(){
           return xonom.run(f);
         });
+        return result;
       };
       x$.service = function(name, func){
-        return done(function(){
+        done(function(){
           return xonom.service(name, func);
         });
+        return result;
       };
       x$.object = function(name, o){
-        return done(function(){
+        done(function(){
           return xonom.object(name, o);
         });
+        return result;
       };
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
