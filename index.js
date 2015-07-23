@@ -31,11 +31,15 @@
     })(
     services));
   };
-  load = function(func){
-    return func.apply(this, p.map(transform)(
-    p.each(register)(
-    params(
-    func))));
+  load = function(any){
+    if (typeof func === 'function') {
+      return func.apply(this, p.map(transform)(
+      p.each(register)(
+      params(
+      any))));
+    } else {
+      return any;
+    }
   };
   object = function(name, object){
     var pub, item, results$ = [];
@@ -51,8 +55,14 @@
   };
   xonom = {};
   x$ = xonom;
+  x$.require = function(path){
+    return load(
+    require(
+    path));
+  };
   x$.func = function(f){
-    return load(f);
+    load(f);
+    return xonom;
   };
   x$.file = function(path){
     load(

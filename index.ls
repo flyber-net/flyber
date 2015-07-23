@@ -38,7 +38,6 @@ const object = (name, object)->
 
 const xonom =  {}
 xonom
- ..test = ->
  ..require = (path)->
     path |> require |> load
  ..func = (f)->
