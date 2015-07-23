@@ -26,7 +26,6 @@ const load-string = (str)->
     if str.index-of(\*) > -1
         require(\glob) str, [], (err, files) ->
           files.for-each load
-       xonom
     else 
        str |> require |> load
 
@@ -70,31 +69,8 @@ xonom
  ..require = (path)->
     path |> require |> load
  ..run = (f)->
-        result = load(f)
-        if typeof! result?on-success is \Function
-          done = (func)->
-              result.on-success ->
-                 func!
-          
-          console.log result
-          result
-            ..run = (f)->
-              done ->
-                xonom.run(f)
-              result
-            ..service = (name, func)->
-              done ->
-                xonom.service(name, func)
-              result
-            ..object = (name, o)->
-              done ->
-                xonom.object(name, o)
-              result
-            ..require = (path)->
-                throw "'require' method is not allowed during async execution"
-          result
-        else
-          xonom
+        load(f)
+        xonom
  ..service = (name, func)->
     func |> load |> object name, _
     xonom

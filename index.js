@@ -106,41 +106,8 @@
     path));
   };
   x$.run = function(f){
-    var result, done, x$;
-    result = load(f);
-    if (toString$.call(result != null ? result.onSuccess : void 8).slice(8, -1) === 'Function') {
-      done = function(func){
-        return result.onSuccess(function(){
-          return func();
-        });
-      };
-      console.log(result);
-      x$ = result;
-      x$.run = function(f){
-        done(function(){
-          return xonom.run(f);
-        });
-        return result;
-      };
-      x$.service = function(name, func){
-        done(function(){
-          return xonom.service(name, func);
-        });
-        return result;
-      };
-      x$.object = function(name, o){
-        done(function(){
-          return xonom.object(name, o);
-        });
-        return result;
-      };
-      x$.require = function(path){
-        throw "'require' method is not allowed during async execution";
-      };
-      return result;
-    } else {
-      return xonom;
-    }
+    load(f);
+    return xonom;
   };
   x$.service = function(name, func){
     object(name, load(
