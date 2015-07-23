@@ -44,9 +44,7 @@
   clone = function(obj, copy){
     var attr, results$ = [];
     for (attr in obj) {
-      if (obj.hasOwnProperty(attr)) {
-        results$.push(copy[attr] = obj[attr]);
-      }
+      results$.push(copy[attr] = obj[attr]);
     }
     return results$;
   };

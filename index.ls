@@ -30,8 +30,8 @@ const load = (any)->
 
 const clone = (obj, copy)->
     for attr of obj
-      if obj.has-own-property attr 
-         copy[attr] = obj[attr]
+      #if obj.has-own-property attr 
+      copy[attr] = obj[attr]
 
 const object = (name, object)->
    const pub =
