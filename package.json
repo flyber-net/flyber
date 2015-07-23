@@ -1,36 +1,22 @@
 {
-  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
-  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
-  "maintainers": [],
-  "directories": {},
-  "_npmVersion": "0.1.00",
-  "_npmUser": {
-    "name": "askucher",
-    "email": "a.stegno@gmail.com"
-  },
-  "dist": {
-    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
-    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
-  },
-  "_from": "xonom@>0.1",
-  "files": [
-    "index.js"
-  ],
-  "_id": "xonom@0.6.0",
-  "author": {
-    "name": "Xonom",
-    "url": ""
-  },
+  "uperversion": "0.1",
+  "version": "0.1.53",
+  "homepage": "https://github.com/gruntjs/",
+  "subversion": 53,
   "repository": {
     "type": "git",
     "url": "git@github.com:askucher/xonom.git"
   },
-  "subversion": 52,
-  "homepage": "https://github.com/gruntjs/",
-  "version": "0.1.52",
-  "uperversion": "0.1",
-  "name": "xonom",
-  "description": "Provides clean communication between angular and express",
+  "author": {
+    "name": "Xonom",
+    "url": ""
+  },
+  "_id": "xonom@0.6.0",
+  "files": [
+    "index.js"
+  ],
+  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
+  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
   "licenses": [
     {
       "type": "MIT",
@@ -53,5 +39,19 @@
   "keywords": [
     "node"
   ],
-  "peerDependencies": {}
+  "peerDependencies": {},
+  "description": "Provides clean communication between angular and express",
+  "name": "xonom",
+  "_from": "xonom@>0.1",
+  "dist": {
+    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
+    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
+  },
+  "_npmUser": {
+    "name": "askucher",
+    "email": "a.stegno@gmail.com"
+  },
+  "_npmVersion": "0.1.00",
+  "directories": {},
+  "maintainers": []
 }

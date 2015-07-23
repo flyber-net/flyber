@@ -113,18 +113,17 @@
       x$ = result;
       x$.run = function(f){
         return done(function(){
-          console.log('success');
-          return xonom.run(f);
+          return console.log('success');
         });
       };
       x$.service = function(name, func){
         return done(function(){
-          return xonom.service(name, func);
+          return console.log('success');
         });
       };
       x$.object = function(name, o){
         return done(function(){
-          return xonom.object(name, o);
+          return console.log('success');
         });
       };
       x$.require = function(path){

@@ -74,13 +74,15 @@ xonom
             ..run = (f)->
               done ->
                 console.log \success
-                xonom.run(f)
+                #xonom.run(f)
             ..service = (name, func)->
               done ->
-                xonom.service(name, func)
+                console.log \success
+                #xonom.service(name, func)
             ..object = (name, o)->
               done ->
-                xonom.object(name, o)
+                console.log \success
+                #xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
           result  
