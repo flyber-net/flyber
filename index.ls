@@ -40,7 +40,7 @@ const xonom =  {}
 xonom
  ..require = (path)->
     path |> require |> load
- ..func = (f)->
+ ..run = (f)->
     load f
     xonom
  ..service = (name, func)->

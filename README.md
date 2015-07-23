@@ -48,7 +48,7 @@ var func = function ($xonom) {
 var xonom = require('xonom');
 
 //Apply xonom to function
-xonom.func(func)
+xonom.run(func)
 
 //Or apply xonom to file
 xonom.require('./config.js');
@@ -57,7 +57,7 @@ xonom.require('./myservice.js');
 //Apply xonom to object
 xonom.object('config', { common: 'object' });
 
-xonom.func(function(config) {
+xonom.run(function(config) {
 
   console.log(config) //=> { common: 'object' }
 

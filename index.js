@@ -60,7 +60,7 @@
     require(
     path));
   };
-  x$.func = function(f){
+  x$.run = function(f){
     load(f);
     return xonom;
   };
