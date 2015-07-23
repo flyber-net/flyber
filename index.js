@@ -46,7 +46,6 @@
     pub = transform(
     register(
     name));
-    pub.prototype = object;
     for (item in object) {
       if (object.hasOwnProperty(item)) {
         results$.push(pub[item] = object[item]);
