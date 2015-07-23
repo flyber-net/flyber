@@ -79,18 +79,16 @@
     }
     prototype.success = function(result){
       console.log('result', result, this.callbacks);
-      p.each(function(it){
-        return it(result);
-      })(
-      this.callbacks);
+      this.callbacks.splice(0, 1)(result);
       this.ready = true;
       return this.result = result;
     };
     prototype.onSuccess = function(callback){
       if (this.ready) {
-        callback(this.result);
+        return callback(this.result);
+      } else {
+        return this.callbacks.push(callback);
       }
-      return this.callbacks.push(callback);
     };
     return Promise;
   }());

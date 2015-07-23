@@ -50,13 +50,14 @@ class Promise
     @ready =  no
   success: (result) ->
       console.log \result, result, @callbacks
-      @callbacks |> p.each (-> it result)
+      @callbacks.splice(0, 1) result
       @ready = yes
       @result = result
   on-success: (callback)->
     if @ready
        callback @result
-    @callbacks.push callback
+    else
+       @callbacks.push callback
 
 
 const xonom =  {}
