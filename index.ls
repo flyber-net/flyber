@@ -26,6 +26,7 @@ const load-string = (str)->
     if str.index-of(\*) > -1
         require(\glob) str, [], (err, files) ->
           files.for-each load
+       xonom
     else 
        str |> require |> load
 
