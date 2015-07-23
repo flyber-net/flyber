@@ -48,7 +48,7 @@
     name));
     for (item in object) {
       if (object.hasOwnProperty(item)) {
-        results$.push(pub[item] = object[item]);
+        results$.push(pub.prototype[item] = object[item]);
       }
     }
     return results$;
