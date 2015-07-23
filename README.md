@@ -1,5 +1,5 @@
 # xonom
-Service model provider for nodejs
+AngularJS service model in nodej
 
 ##Install
 
