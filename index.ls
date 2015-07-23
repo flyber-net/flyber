@@ -31,6 +31,7 @@ const load = (any)->
 const object = (name, object)->
    const pub =
       name |> register |> transform
+   pub.prototype = object
    for item of object
     if object.has-own-property item
       pub[item] = object[item]
