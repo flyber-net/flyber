@@ -101,23 +101,22 @@
     path));
   };
   x$.run = function(f){
-    var result, done, x$;
+    var result, x$;
     result = load(f);
     if (toString$.call(result.onSuccess).slice(8, -1) === 'Function') {
-      done = result.onSuccess;
       x$ = result;
       x$.run = function(f){
-        return done(function(){
+        return result.onSuccess(function(){
           return xonom.run(f);
         });
       };
       x$.service = function(name, func){
-        return done(function(){
+        return result.onSuccess(function(){
           return xonom.service(name, func);
         });
       };
       x$.object = function(name, o){
-        return done(function(){
+        return result.onSuccess(function(){
           return xonom.object(name, o);
         });
       };
