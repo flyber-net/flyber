@@ -131,7 +131,7 @@
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
       };
-      return xonom;
+      return result;
     } else {
       return xonom;
     }

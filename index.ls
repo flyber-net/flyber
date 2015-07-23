@@ -70,6 +70,7 @@ xonom
               result.on-success ->
                  result.callbacks.length = 0
                  func!
+          
           console.log result
           result
             ..run = (f)->
@@ -83,7 +84,7 @@ xonom
                 xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
-          xonom
+          result
         else
           xonom
  ..service = (name, func)->
