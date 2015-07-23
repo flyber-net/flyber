@@ -36,7 +36,6 @@ const load = (any)->
 
 const clone = (obj, copy)->
     for attr of obj
-      #if obj.has-own-property attr 
       copy[attr] = obj[attr]
 
 const object = (name, object)->
@@ -44,13 +43,45 @@ const object = (name, object)->
       name |> register |> transform
    clone object, pub
 
+
+class Promise
+  ->
+    @callbacks= []
+    @ready =  no
+  success: (result) ->
+      @callbacks |> p.each (-> it result)
+      @ready = yes
+      @result = result
+  on-success: (callback)->
+    if @ready
+       callback @result
+    @callbacks.push callback
+
+
 const xonom =  {}
 xonom
  ..require = (path)->
     path |> require |> load
  ..run = (f)->
-    load f
-    xonom
+    const promise = do
+        result = load(f)
+        if result instanceof Promise
+          done = result.on-success
+          result
+            ..run = (f)->
+              done ->
+                xonom.run(f)
+            ..service = (name, func)->
+              done ->
+                xonom.service(name, func)
+            ..object = (name, o)->
+              done ->
+                xonom.object(name, o)
+            ..require = (path)->
+                throw "'require' method is not allowed during async execution"
+          result  
+        else
+          xonom
  ..service = (name, func)->
     func |> load |> object name, _
     xonom
@@ -58,9 +89,14 @@ xonom
     object name, o
     xonom
 
-object \$xonom, xonom
 
-module.exports = xonom
+
+
+module.exports = 
+    xonom
+      .object \$xonom
+      .service \$promise, ->
+          new Promise!
 
     
         
