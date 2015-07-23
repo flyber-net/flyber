@@ -110,30 +110,29 @@
           return func();
         });
       };
+      console.log(result);
       x$ = result;
       x$.run = function(f){
         return done(function(){
-          console.log('success');
-          return xonom;
+          return xonom.run(f);
         });
       };
       x$.service = function(name, func){
         return done(function(){
-          console.log('success');
-          return xonom;
+          return xonom.service(name, func);
         });
       };
       x$.object = function(name, o){
         return done(function(){
-          console.log('success');
-          return xonom;
+          return xonom.object(name, o);
         });
       };
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
       };
       console.log('promis', result);
-      return result;
+      result;
+      return xonom;
     } else {
       return xonom;
     }

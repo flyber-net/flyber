@@ -69,26 +69,22 @@ xonom
               result.on-success ->
                  result.callbacks.length = 0
                  func!
+          console.log result
           result
             ..run = (f)->
               done ->
-                console.log \success
-                xonom
-                #xonom.run(f)
+                xonom.run(f)
             ..service = (name, func)->
               done ->
-                console.log \success
-                xonom
-                #xonom.service(name, func)
+                xonom.service(name, func)
             ..object = (name, o)->
               done ->
-                console.log \success
-                xonom
-                #xonom.object(name, o)
+                xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
           console.log \promis, result
           result  
+          xonom
         else
           xonom
  ..service = (name, func)->
