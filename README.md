@@ -50,9 +50,9 @@ var xonom = require('xonom');
 //Apply xonom to function
 xonom.func(module.exports)
 
-//Apply xonom to file
-xonom.file('./user.service.js');
-xonom.file('./domain.service.js');
+//Or apply xonom to file
+xonom.file('./config.js');
+xonom.file('./myservice.js');
 
 //Apply xonom to object
 xonom.object('config', { common: 'object' });
