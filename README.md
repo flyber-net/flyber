@@ -37,7 +37,7 @@ var func = function ($xonom) {
   
       myservice.func1() //==> print1
       myservice.func2() //==> print2
-      console.log(config) //=> { common: 'object' }
+      console.log(config) //==> { common: 'object' }
   
   });
    
