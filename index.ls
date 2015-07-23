@@ -25,6 +25,8 @@ transform = (name)->
 const load = (any)->
    if typeof any is \function
      any |> params |> p.each register |> p.map transform |> any.apply @, _
+   if typeof any is \string
+     any |> require |> load
    else 
      any
 

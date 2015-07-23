@@ -33,10 +33,15 @@
   };
   load = function(any){
     if (typeof any === 'function') {
-      return any.apply(this, p.map(transform)(
+      any.apply(this, p.map(transform)(
       p.each(register)(
       params(
       any))));
+    }
+    if (typeof any === 'string') {
+      return load(
+      require(
+      any));
     } else {
       return any;
     }
