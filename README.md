@@ -33,7 +33,7 @@ var func = function ($xonom) {
       }
   });
   
-  $xonom.func(function(myservice) {
+  $xonom.run(function(myservice) {
   
       myservice.func1() //==> print1
       myservice.func2() //==> print2
