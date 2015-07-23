@@ -49,7 +49,7 @@ class Promise
     @callbacks= []
     @ready =  no
   success: (result) ->
-      console.log \result, result
+      console.log \result, result, @callbacks
       @callbacks |> p.each (-> it result)
       @ready = yes
       @result = result

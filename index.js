@@ -78,7 +78,7 @@
       this.ready = false;
     }
     prototype.success = function(result){
-      console.log('result', result);
+      console.log('result', result, this.callbacks);
       p.each(function(it){
         return it(result);
       })(
