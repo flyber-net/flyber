@@ -107,6 +107,7 @@
       x$ = result;
       x$.run = function(f){
         return result.onSuccess(function(){
+          console.log('success');
           return xonom.run(f);
         });
       };

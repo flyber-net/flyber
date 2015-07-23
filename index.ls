@@ -69,6 +69,7 @@ xonom
           result
             ..run = (f)->
               result.on-success ->
+                console.log \success
                 xonom.run(f)
             ..service = (name, func)->
               result.on-success ->
