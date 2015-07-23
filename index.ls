@@ -66,16 +66,20 @@ xonom
  ..run = (f)->
         result = load(f)
         if typeof! result?on-success is \Function
+          done = (func)->
+              result.on-success ->
+                 result.callbacks.length = 0
+                 func!
           result
             ..run = (f)->
-              result.on-success ->
+              done ->
                 console.log \success
                 xonom.run(f)
             ..service = (name, func)->
-              result.on-success ->
+              done ->
                 xonom.service(name, func)
             ..object = (name, o)->
-              result.on-success ->
+              done ->
                 xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
