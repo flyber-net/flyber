@@ -1,5 +1,7 @@
 # xonom
-AngularJS service model in nodej
+AngularJS service model for nodejs
+
+keywords: node-angular, angularjs-nodejs
 
 ##Install
 
