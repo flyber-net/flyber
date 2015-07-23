@@ -50,7 +50,8 @@ class Promise
     @ready =  no
   success: (result) ->
       console.log \result, result, @callbacks
-      @callbacks.splice(0, 1) result
+      if @callbacks.length > 0
+         @callbacks.splice(0, 1) result
       @ready = yes
       @result = result
   on-success: (callback)->

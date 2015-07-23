@@ -79,7 +79,9 @@
     }
     prototype.success = function(result){
       console.log('result', result, this.callbacks);
-      this.callbacks.splice(0, 1)(result);
+      if (this.callbacks.length > 0) {
+        this.callbacks.splice(0, 1)(result);
+      }
       this.ready = true;
       return this.result = result;
     };
