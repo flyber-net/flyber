@@ -137,7 +137,8 @@
     object(name, o);
     return xonom;
   };
-  xonom.object('$xonom').service('$promise', function(){
+  xonom.object('$xonom', xonom);
+  xonom.service('$promise', function(){
     return new Promise();
   });
   module.exports = xonom;

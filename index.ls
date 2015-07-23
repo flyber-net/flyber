@@ -87,9 +87,8 @@ xonom
     object name, o
     xonom
 
-xonom
-      .object \$xonom
-      .service \$promise, ->
+xonom.object \$xonom, xonom
+xonom.service \$promise, ->
           new Promise!
 
 
