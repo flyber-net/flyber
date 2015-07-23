@@ -86,7 +86,6 @@
       return this.result = result;
     };
     prototype.onSuccess = function(callback){
-      console.log('progress', this);
       if (this.ready) {
         callback(this.result);
       }
@@ -104,7 +103,7 @@
   x$.run = function(f){
     var result, x$;
     result = load(f);
-    if (toString$.call(result.onSuccess).slice(8, -1) === 'Function') {
+    if (toString$.call(result != null ? result.onSuccess : void 8).slice(8, -1) === 'Function') {
       x$ = result;
       x$.run = function(f){
         return result.onSuccess(function(){

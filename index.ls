@@ -53,7 +53,6 @@ class Promise
       @ready = yes
       @result = result
   on-success: (callback)->
-    console.log \progress, @
     if @ready
        callback @result
     
@@ -66,7 +65,7 @@ xonom
     path |> require |> load
  ..run = (f)->
         result = load(f)
-        if typeof! result.on-success is \Function
+        if typeof! result?on-success is \Function
           result
             ..run = (f)->
               result.on-success ->
