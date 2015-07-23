@@ -64,12 +64,6 @@
     load(f);
     return xonom;
   };
-  x$.file = function(path){
-    load(
-    require(
-    path));
-    return xonom;
-  };
   x$.service = function(name, func){
     object(name, load(
     func));

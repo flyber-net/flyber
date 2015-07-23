@@ -43,9 +43,6 @@ xonom
  ..func = (f)->
     load f
     xonom
- ..file = (path)->
-    path |> require |> load
-    xonom
  ..service = (name, func)->
     func |> load |> object name, _
     xonom

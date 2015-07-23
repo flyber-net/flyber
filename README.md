@@ -51,8 +51,8 @@ var xonom = require('xonom');
 xonom.func(func)
 
 //Or apply xonom to file
-xonom.file('./config.js');
-xonom.file('./myservice.js');
+xonom.require('./config.js');
+xonom.require('./myservice.js');
 
 //Apply xonom to object
 xonom.object('config', { common: 'object' });
