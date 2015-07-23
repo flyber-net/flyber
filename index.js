@@ -103,8 +103,7 @@
   x$.run = function(f){
     var result, done, x$;
     result = load(f);
-    console.log('result', result);
-    if (result instanceof Promise) {
+    if (toString$.call(result.onSuccess).slice(8, -1) === 'Function') {
       done = result.onSuccess;
       x$ = result;
       x$.run = function(f){
