@@ -13,8 +13,8 @@ Desire to get rid of these ugly statements
 
 ```Javascript
 
-require('../../user.js')
-require('../db.js')
+require('../../myservice.js')
+require('../config.json')
 ...
 
 ```
@@ -55,11 +55,11 @@ xonom.file('./user.service.js');
 xonom.file('./domain.service.js');
 
 //Apply xonom to object
-xonom.object('obj', { common: 'object' });
+xonom.object('config', { common: 'object' });
 
-xonom.func(function(obj) {
+xonom.func(function(config) {
 
-  console.log(obj) //=> { common: 'object' }
+  console.log(config) //=> { common: 'object' }
 
 })
 ```
