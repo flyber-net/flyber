@@ -22,8 +22,11 @@ register = (name)->
 transform = (name)->
   services |> p.find (.0 is name) |> (.1)
 
-const load = (func)->
-   func |> params |> p.each register |> p.map transform |> func.apply @, _
+const load = (any)->
+   if typeof func is \function
+     any |> params |> p.each register |> p.map transform |> func.apply @, _
+   else 
+     any
 
 const object = (name, object)->
    const pub =
