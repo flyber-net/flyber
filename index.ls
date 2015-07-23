@@ -55,7 +55,6 @@ class Promise
   on-success: (callback)->
     if @ready
        callback @result
-    
     @callbacks.push callback
 
 
@@ -85,6 +84,7 @@ xonom
                 #xonom.object(name, o)
             ..require = (path)->
                 throw "'require' method is not allowed during async execution"
+          console.log \promis, result
           result  
         else
           xonom

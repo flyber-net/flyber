@@ -129,6 +129,7 @@
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
       };
+      console.log('promis', result);
       return result;
     } else {
       return xonom;
