@@ -22,9 +22,16 @@ register = (name)->
 transform = (name)->
   services |> p.find (.0 is name) |> (.1)
 
+const load-string = (str)->
+    if str.index-of(\*) > -1
+        require(\glob) str, [], (err, files) ->
+          files.for-each load
+    else 
+       str |> require |> load
+
 const load = (any)->
    | typeof! any is \Function => any |> params |> p.each register |> p.map transform |> any.apply @, _
-   | typeof! any is \String => any |> require |> load
+   | typeof! any is \String => any |> load-string
    | _ => any
 
 const clone = (obj, copy)->
