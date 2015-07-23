@@ -24,7 +24,7 @@ require('../config.json')
 
 ```Javascript 
 
-module.exports = function ($xonom) {
+var func = function ($xonom) {
   
   $xonom.service("myservice", function() {
       return {
@@ -48,7 +48,7 @@ module.exports = function ($xonom) {
 var xonom = require('xonom');
 
 //Apply xonom to function
-xonom.func(module.exports)
+xonom.func(func)
 
 //Or apply xonom to file
 xonom.file('./config.js');
