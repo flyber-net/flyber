@@ -38,8 +38,8 @@ const object = (name, object)->
 
 const xonom =  {}
 xonom
- ..require = (f)->
-     load f
+ ..require = (path)->
+    path |> require |> load
  ..func = (f)->
     load f
     xonom
