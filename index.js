@@ -32,8 +32,8 @@
     services));
   };
   load = function(any){
-    if (typeof func === 'function') {
-      return func.apply(this, p.map(transform)(
+    if (typeof any === 'function') {
+      return any.apply(this, p.map(transform)(
       p.each(register)(
       params(
       any))));
