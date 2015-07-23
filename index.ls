@@ -33,7 +33,7 @@ const object = (name, object)->
       name |> register |> transform
    for item of object
     if object.has-own-property item
-      pub.prototype[item] = object[item]
+      pub[item] = object[item]
 
 const xonom =  {}
 xonom
