@@ -101,22 +101,33 @@
     path));
   };
   x$.run = function(f){
-    var promise, result, done, x$;
-    return promise = (result = load(f), result instanceof Promise ? (done = result.onSuccess, x$ = result, x$.run = function(f){
-      return done(function(){
-        return xonom.run(f);
-      });
-    }, x$.service = function(name, func){
-      return done(function(){
-        return xonom.service(name, func);
-      });
-    }, x$.object = function(name, o){
-      return done(function(){
-        return xonom.object(name, o);
-      });
-    }, x$.require = function(path){
-      throw "'require' method is not allowed during async execution";
-    }, result) : xonom);
+    var result, done, x$;
+    result = load(f);
+    if (result instanceof Promise) {
+      done = result.onSuccess;
+      x$ = result;
+      x$.run = function(f){
+        return done(function(){
+          return xonom.run(f);
+        });
+      };
+      x$.service = function(name, func){
+        return done(function(){
+          return xonom.service(name, func);
+        });
+      };
+      x$.object = function(name, o){
+        return done(function(){
+          return xonom.object(name, o);
+        });
+      };
+      x$.require = function(path){
+        throw "'require' method is not allowed during async execution";
+      };
+      return result;
+    } else {
+      return xonom;
+    }
   };
   x$.service = function(name, func){
     object(name, load(

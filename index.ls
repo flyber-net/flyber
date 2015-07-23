@@ -63,7 +63,6 @@ xonom
  ..require = (path)->
     path |> require |> load
  ..run = (f)->
-    const promise = do
         result = load(f)
         if result instanceof Promise
           done = result.on-success
