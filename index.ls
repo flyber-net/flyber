@@ -38,7 +38,7 @@ const object = (name, object)->
 
 const xonom =  {}
 xonom
- ..require (f)->
+ ..require = (f)->
      load f
  ..func = (f)->
     load f
