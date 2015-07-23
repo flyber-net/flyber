@@ -103,6 +103,7 @@
   x$.run = function(f){
     var result, done, x$;
     result = load(f);
+    console.log('result', result);
     if (result instanceof Promise) {
       done = result.onSuccess;
       x$ = result;

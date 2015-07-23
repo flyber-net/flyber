@@ -64,6 +64,7 @@ xonom
     path |> require |> load
  ..run = (f)->
         result = load(f)
+        console.log \result, result
         if result instanceof Promise
           done = result.on-success
           result
