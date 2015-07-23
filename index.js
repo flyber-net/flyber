@@ -124,9 +124,10 @@
       x$.require = function(path){
         throw "'require' method is not allowed during async execution";
       };
-      result;
+      return result;
+    } else {
+      return xonom;
     }
-    return xonom;
   };
   x$.service = function(name, func){
     object(name, load(
