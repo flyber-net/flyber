@@ -7,6 +7,18 @@ Service model provider for nodejs
 npm install xonom
 ```
 
+##Motivation
+Desire to get rid of these ugly statements
+
+
+```Javascript
+
+require('../../user.js')
+require('../db.js')
+...
+
+```
+
 ##EXAMPLE
 
 
