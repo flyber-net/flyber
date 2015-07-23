@@ -47,20 +47,24 @@ var func = function ($xonom) {
 
 var xonom = require('xonom');
 
+//Add object to xonom
+xonom.object('config', { common: 'object' });
+
 //Apply xonom to function
 xonom.run(func)
 
-//Or apply xonom to file
-xonom.require('./config.js');
-xonom.require('./myservice.js');
-
-//Apply xonom to object
-xonom.object('config', { common: 'object' });
 
 xonom.run(function(config) {
 
   console.log(config) //=> { common: 'object' }
 
-})
+});
+
+
+
+//Or put javascript in files
+xonom.require('./config.js');
+xonom.require('./myservice.js');
+
 ```
 
