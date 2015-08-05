@@ -24,8 +24,7 @@ transform = (name)->
 
 const load-string = (str)->
     if str.index-of(\*) > -1
-        require(\glob) str, [], (err, files) ->
-          files.for-each load
+        require(\glob).sync(str).for-each load
     else 
        str |> require |> load
 
