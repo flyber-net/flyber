@@ -33,9 +33,7 @@
   };
   loadString = function(str){
     if (str.indexOf('*') > -1) {
-      return require('glob')(str, [], function(err, files){
-        return files.forEach(load);
-      });
+      return require('glob').sync(str).forEach(load);
     } else {
       return load(
       require(
