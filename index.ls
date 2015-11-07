@@ -16,7 +16,9 @@ services = []
 
 register = (name)->
   return if services.index-of(name)>-1
-  services.push [name, {}]
+  o = -> 
+     o.$get?apply?(o, arguments)
+  services.push [name, o]
   name
 
 transform = (name)->
@@ -34,9 +36,11 @@ const load = (any)->
    | _ => any
 
 const clone = (obj, copy)->
-    for attr of obj
-      copy[attr] = obj[attr]
-
+    if typeof! obj is \Object
+      for attr of obj
+          copy[attr] = obj[attr]
+    if typeof! obj is \Function
+      copy.$get = obj
 const object = (name, object)->
    const pub =
       name |> register |> transform
@@ -46,7 +50,6 @@ const object = (name, object)->
 
 
 const xonom =  {}
-xonom
  ..require = (path)->
     path |> require |> load
  ..run = (f)->
