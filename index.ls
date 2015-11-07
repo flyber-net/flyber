@@ -38,7 +38,12 @@ const load = (any)->
 const clone = (obj, copy)->
     if typeof! obj is \Object
       for attr of obj
-          copy[attr] = obj[attr]
+          switch typeof! obj[attr]
+            case \Function 
+              copy[attr] = ->
+                  obj[attr].apply obj, arguments
+            else          
+              copy[attr] = obj[attr]
     if typeof! obj is \Function
       copy.$get = obj
 const object = (name, object)->
