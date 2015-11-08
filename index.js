@@ -63,21 +63,11 @@
     var attr;
     if (toString$.call(obj).slice(8, -1) === 'Object') {
       for (attr in obj) {
-        switch (toString$.call(obj[attr]).slice(8, -1)) {
-        case 'Function':
-          copy[attr] = fn$;
-          break;
-        default:
-          copy[attr] = obj[attr];
-        }
+        copy[attr] = obj[attr];
       }
     }
     if (toString$.call(obj).slice(8, -1) === 'Function') {
       return copy.$get = obj;
-    }
-    function fn$(){
-      console.log('FuncInvoke', attr, obj[attr]);
-      return obj[attr].apply(obj, arguments);
     }
   };
   object = function(name, object){
