@@ -81,7 +81,7 @@
     return results$;
     function fn$(){
       var e;
-      console.log('apply', attr, obj);
+      console.log('apply', attr);
       try {
         return obj[attr].apply(obj, arguments);
       } catch (e$) {
