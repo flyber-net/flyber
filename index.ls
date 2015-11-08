@@ -47,12 +47,6 @@ const clone = (obj, copy, attr)->
         case \Function
           copy[attr] = ->
             obj[attr].apply obj, arguments
-          #if attr is \post
-          #  copy[attr] = ->
-          #      obj[attr].apply obj, arguments
-          #else 
-          #    copy[attr] = obj[attr]
-          
         else 
           copy[attr] = obj[attr]
 
