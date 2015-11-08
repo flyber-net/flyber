@@ -44,12 +44,6 @@ const clone-service = (obj, copy)->
 
 const clone-object = (obj, copy)->
     for attr of obj
-      switch typeof! obj[attr]
-        case \Function 
-          copy[attr] = ->
-              console.log \apply, attr, obj
-              obj[attr].apply obj, arguments
-        else 
           copy[attr] = obj[attr]
       
 
