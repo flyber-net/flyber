@@ -73,6 +73,7 @@
       switch (toString$.call(obj[attr]).slice(8, -1)) {
       case 'Function':
         if (attr === 'post') {
+          console.log('attr', attr);
           results$.push(copy[attr] = fn$);
         } else {
           results$.push(copy[attr] = obj[attr]);
