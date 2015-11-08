@@ -35,26 +35,32 @@ const load = (any)->
    | typeof! any is \String => any |> load-string
    | _ => any
 
-const clone = (obj, copy)->
+const clone-service = (obj, copy)->
     switch typeof! obj
       case \Object
-        for attr of obj
-          switch typeof! obj[attr]
-            case \Function 
-              copy[attr] = ->
-                  obj[attr].apply obj, arguments
-            else 
-              copy[attr] = obj[attr]
+        clone-object obj, copy
       case \Function
-        console.log 'CLONE FUNC', obj
         copy.$get = obj
+
+const clone-object = (obj, copy)->
+    for attr of obj
+      switch typeof! obj[attr]
+        case \Function 
+          copy[attr] = ->
+              obj[attr].apply obj, arguments
+        else 
+          copy[attr] = obj[attr]
+      
 
 const object = (name, object)->
    const pub =
       name |> register |> transform
-   console.log \object, name
-   clone object, pub
+   clone-object object, pub
 
+const service = (name, object)->
+   const pub =
+      name |> register |> transform
+   clone-service object, pub
 
 
 
@@ -66,7 +72,7 @@ xonom
    load(f)
    xonom
  ..service = (name, func)->
-   func |> load |> object name, _
+   func |> load |> service name, _
    xonom
  ..object = (name, o)->
    object name, o
