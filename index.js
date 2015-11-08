@@ -70,16 +70,9 @@
   clone = function(obj, copy, attr){
     switch (toString$.call(obj[attr]).slice(8, -1)) {
     case 'Function':
-      if (attr === 'post') {
-        console.log('attr', attr);
-        return copy[attr] = function(){
-          console.log('apply', attr, arguments);
-          return obj[attr].apply(obj, arguments);
-        };
-      } else {
-        return copy[attr] = obj[attr];
-      }
-      break;
+      return copy[attr] = function(){
+        return obj[attr].apply(obj, arguments);
+      };
     default:
       return copy[attr] = obj[attr];
     }

@@ -45,13 +45,13 @@ const clone-service = (obj, copy)->
 const clone = (obj, copy, attr)->
     switch typeof! obj[attr]
         case \Function
-          if attr is \post
-            console.log \attr, attr
-            copy[attr] = ->
-                console.log \apply, attr, arguments
-                obj[attr].apply obj, arguments
-          else 
-            copy[attr] = obj[attr]
+          copy[attr] = ->
+            obj[attr].apply obj, arguments
+          #if attr is \post
+          #  copy[attr] = ->
+          #      obj[attr].apply obj, arguments
+          #else 
+          #    copy[attr] = obj[attr]
           
         else 
           copy[attr] = obj[attr]
