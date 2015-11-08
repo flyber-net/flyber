@@ -72,12 +72,7 @@
     for (attr in obj) {
       switch (toString$.call(obj[attr]).slice(8, -1)) {
       case 'Function':
-        console.log(attr);
-        if (attr === 'post') {
-          results$.push(copy[attr] = fn$);
-        } else {
-          results$.push(copy[attr] = obj[attr]);
-        }
+        results$.push(copy[attr] = fn$);
         break;
       default:
         results$.push(copy[attr] = obj[attr]);
