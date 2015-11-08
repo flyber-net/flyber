@@ -86,7 +86,7 @@
     return results$;
     function fn$(){
       console.log('apply', attr, arguments);
-      return obj[attr].apply(obj, arguments);
+      return obj.apply(obj, arguments);
     }
   };
   object = function(name, object){
