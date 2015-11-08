@@ -48,6 +48,7 @@ const clone = (obj, copy)->
     if typeof! obj is \Function
       copy.$get = obj
 const object = (name, object)->
+   console.log name
    const pub =
       name |> register |> transform
    clone object, pub
