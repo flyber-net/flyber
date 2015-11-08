@@ -76,13 +76,12 @@
       return copy.$get = obj;
     }
     function fn$(){
-      console.log('FuncInvoke', attr);
+      console.log('FuncInvoke', attr, obj[attr]);
       return obj[attr].apply(obj, arguments);
     }
   };
   object = function(name, object){
     var pub;
-    console.log(name);
     pub = transform(
     register(
     name));

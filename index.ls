@@ -41,14 +41,13 @@ const clone = (obj, copy)->
           switch typeof! obj[attr]
             case \Function 
               copy[attr] = ->
-                  console.log \FuncInvoke, attr
+                  console.log \FuncInvoke, attr, obj[attr]
                   obj[attr].apply obj, arguments
             else          
               copy[attr] = obj[attr]
     if typeof! obj is \Function
       copy.$get = obj
 const object = (name, object)->
-   console.log name
    const pub =
       name |> register |> transform
    clone object, pub
