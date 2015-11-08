@@ -16,10 +16,15 @@
   };
   services = [];
   register = function(name){
+    var o;
     if (services.indexOf(name) > -1) {
       return;
     }
-    services.push([name, {}]);
+    o = function(){
+      var ref$;
+      return (ref$ = o.$get) != null ? typeof ref$.apply == 'function' ? ref$.apply(o, arguments) : void 8 : void 8;
+    };
+    services.push([name, o]);
     return name;
   };
   transform = function(name){
@@ -55,14 +60,29 @@
     }
   };
   clone = function(obj, copy){
-    var attr, results$ = [];
-    for (attr in obj) {
-      results$.push(copy[attr] = obj[attr]);
+    var attr;
+    if (toString$.call(obj).slice(8, -1) === 'Object') {
+      for (attr in obj) {
+        switch (toString$.call(obj[attr]).slice(8, -1)) {
+        case 'Function':
+          copy[attr] = fn$;
+          break;
+        default:
+          copy[attr] = obj[attr];
+        }
+      }
     }
-    return results$;
+    if (toString$.call(obj).slice(8, -1) === 'Function') {
+      return copy.$get = obj;
+    }
+    function fn$(){
+      console.log('FuncInvoke', attr);
+      return obj[attr].apply(obj, arguments);
+    }
   };
   object = function(name, object){
     var pub;
+    console.log(name);
     pub = transform(
     register(
     name));

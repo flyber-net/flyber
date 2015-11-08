@@ -57,17 +57,18 @@ const object = (name, object)->
 
 
 const xonom =  {}
+xonom
  ..require = (path)->
-    path |> require |> load
+   path |> require |> load
  ..run = (f)->
-        load(f)
-        xonom
+   load(f)
+   xonom
  ..service = (name, func)->
-    func |> load |> object name, _
-    xonom
+   func |> load |> object name, _
+   xonom
  ..object = (name, o)->
-    object name, o
-    xonom
+   object name, o
+   xonom
 
 xonom.object \$xonom, xonom
 
