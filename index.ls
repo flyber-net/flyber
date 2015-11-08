@@ -49,7 +49,7 @@ const clone = (obj, copy, attr)->
             console.log \attr, attr
             copy[attr] = ->
                 console.log \apply, attr, arguments
-                obj[attr].apply undefined, arguments
+                obj[attr].apply obj, arguments
           else 
             copy[attr] = obj[attr]
           

@@ -74,7 +74,7 @@
         console.log('attr', attr);
         return copy[attr] = function(){
           console.log('apply', attr, arguments);
-          return obj[attr].apply(undefined, arguments);
+          return obj[attr].apply(obj, arguments);
         };
       } else {
         return copy[attr] = obj[attr];
