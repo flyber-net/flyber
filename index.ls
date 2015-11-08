@@ -48,9 +48,11 @@ const clone = (obj, copy)->
       case \Function
         console.log 'CLONE FUNC', obj
         copy.$get = obj
+
 const object = (name, object)->
    const pub =
       name |> register |> transform
+   console.log \object, name
    clone object, pub
 
 

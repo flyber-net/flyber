@@ -87,6 +87,7 @@
     pub = transform(
     register(
     name));
+    console.log('object', name);
     return clone(object, pub);
   };
   xonom = {};
