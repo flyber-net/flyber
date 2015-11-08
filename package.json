@@ -1,25 +1,16 @@
 {
-  "_npmVersion": "0.1.00",
-  "_npmUser": {
-    "name": "askucher",
-    "email": "a.stegno@gmail.com"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:askucher/xonom.git"
   },
-  "dist": {
-    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
-    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
+  "author": {
+    "name": "Xonom",
+    "url": ""
   },
-  "_from": "xonom@>0.1",
-  "name": "xonom",
-  "description": "Provides clean communication between angular and express",
-  "version": "0.1.107",
-  "uperversion": "0.1",
-  "dependencies": {
-    "glob": ">0.1"
-  },
-  "devDependencies": {
-    "LiveScript": "^1.3.1"
-  },
-  "peerDependencies": {},
+  "_id": "xonom@0.6.0",
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "node-angular",
     "angular-node",
@@ -28,20 +19,18 @@
     "angular like nodejs",
     "angular services in nodejs"
   ],
-  "files": [
-    "index.js"
-  ],
-  "_id": "xonom@0.6.0",
-  "author": {
-    "name": "Xonom",
-    "url": ""
+  "peerDependencies": {},
+  "devDependencies": {
+    "LiveScript": "^1.3.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:askucher/xonom.git"
+  "dependencies": {
+    "glob": ">0.1"
   },
-  "subversion": 107,
-  "homepage": "https://github.com/gruntjs/",
+  "_npmVersion": "0.1.00",
+  "_npmUser": {
+    "name": "askucher",
+    "email": "a.stegno@gmail.com"
+  },
   "maintainers": [],
   "directories": {},
   "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
@@ -60,5 +49,16 @@
   },
   "engines": {
     "node": ">= 0.8.0"
+  },
+  "homepage": "https://github.com/gruntjs/",
+  "subversion": 108,
+  "uperversion": "0.1",
+  "version": "0.1.108",
+  "description": "Provides clean communication between angular and express",
+  "name": "xonom",
+  "_from": "xonom@>0.1",
+  "dist": {
+    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f7",
+    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
   }
 }

@@ -42,9 +42,8 @@ const clone-service = (obj, copy)->
       case \Function
         copy.$get = obj
 
-const clone-object = (obj, copy)->
-    for attr of obj
-      switch typeof! obj[attr]
+const clone = (obj, copy, attr)->
+    switch typeof! obj[attr]
         case \Function
           if attr is \post
             console.log \attr, attr
@@ -56,6 +55,10 @@ const clone-object = (obj, copy)->
           
         else 
           copy[attr] = obj[attr]
+
+const clone-object = (obj, copy)->
+    for attr of obj
+      clone obj, copy, attr
       
 
 const object = (name, object)->
