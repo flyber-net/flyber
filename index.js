@@ -70,9 +70,25 @@
   cloneObject = function(obj, copy){
     var attr, results$ = [];
     for (attr in obj) {
-      results$.push(copy[attr] = obj[attr]);
+      switch (toString$.call(obj[attr]).slice(8, -1)) {
+      case 'Function':
+        results$.push(copy[attr] = fn$);
+        break;
+      default:
+        results$.push(copy[attr] = obj[attr]);
+      }
     }
     return results$;
+    function fn$(){
+      var e;
+      console.log('apply', attr, obj);
+      try {
+        return obj[attr].apply(obj, arguments);
+      } catch (e$) {
+        e = e$;
+        return console.log('error', attr);
+      }
+    }
   };
   object = function(name, object){
     var pub;
