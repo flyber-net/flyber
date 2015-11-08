@@ -80,6 +80,7 @@
     }
     return results$;
     function fn$(){
+      console.log('apply', attr, obj);
       return obj[attr].apply(obj, arguments);
     }
   };

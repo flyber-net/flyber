@@ -47,6 +47,7 @@ const clone-object = (obj, copy)->
       switch typeof! obj[attr]
         case \Function 
           copy[attr] = ->
+              console.log \apply, attr, obj
               obj[attr].apply obj, arguments
         else 
           copy[attr] = obj[attr]
