@@ -67,6 +67,7 @@
       }
     }
     if (toString$.call(obj).slice(8, -1) === 'Function') {
+      console.log('func', obj);
       return copy.$get = obj;
     }
   };
