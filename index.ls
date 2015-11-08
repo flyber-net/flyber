@@ -51,7 +51,7 @@ const clone-object = (obj, copy)->
             copy[attr] = ->
                 console.log \apply, attr, arguments
                 obj[attr].apply obj, arguments
-          then 
+          else 
             copy[attr] = obj[attr]
           
         else 
