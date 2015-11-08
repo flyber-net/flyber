@@ -36,20 +36,18 @@ const load = (any)->
    | _ => any
 
 const clone = (obj, copy)->
-    
-    if typeof! obj is \Object
-      for attr of obj
-          copy[attr] = obj[attr]
-          #switch typeof! obj[attr]
-          #  case \Function 
-          #    copy[attr] = ->
-          #        console.log \FuncInvoke, attr, obj[attr]
-          #        obj[attr].apply obj, arguments
-          #  else          
-          #    copy[attr] = obj[attr]
-    if typeof! obj is \Function
-      console.log \func, obj
-      copy.$get = obj
+    switch typeof! obj
+      case \Object
+        for attr of obj
+          switch typeof! obj[attr]
+            case \Function 
+              copy[attr] = ->
+                  obj[attr].apply obj, arguments
+            else 
+              copy[attr] = obj[attr]
+      case \Function
+        console.log 'CLONE FUNC', obj
+        copy.$get = obj
 const object = (name, object)->
    const pub =
       name |> register |> transform

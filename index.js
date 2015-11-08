@@ -60,15 +60,26 @@
     }
   };
   clone = function(obj, copy){
-    var attr;
-    if (toString$.call(obj).slice(8, -1) === 'Object') {
+    var attr, results$ = [];
+    switch (toString$.call(obj).slice(8, -1)) {
+    case 'Object':
       for (attr in obj) {
-        copy[attr] = obj[attr];
+        switch (toString$.call(obj[attr]).slice(8, -1)) {
+        case 'Function':
+          results$.push(copy[attr] = fn$);
+          break;
+        default:
+          results$.push(copy[attr] = obj[attr]);
+        }
       }
-    }
-    if (toString$.call(obj).slice(8, -1) === 'Function') {
-      console.log('func', obj);
+      return results$;
+      break;
+    case 'Function':
+      console.log('CLONE FUNC', obj);
       return copy.$get = obj;
+    }
+    function fn$(){
+      return obj[attr].apply(obj, arguments);
     }
   };
   object = function(name, object){
