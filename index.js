@@ -109,6 +109,9 @@
     load(f);
     return xonom;
   };
+  x$.eval = function(f){
+    return load(f);
+  };
   x$.service = function(name, func){
     service(name, load(
     func));
