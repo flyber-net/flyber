@@ -74,6 +74,8 @@ xonom
  ..run = (f)->
    load(f)
    xonom
+ ..eval: (f)->
+   load f
  ..service = (name, func)->
    func |> load |> service name, _
    xonom
