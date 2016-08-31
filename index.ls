@@ -69,8 +69,10 @@ $new = ->
     xonom =  {}
     
     xonom
+     ..require = (path)->
+       path |> require |> load
      ..run = (f)->
-       load(f)
+       load f
        xonom
      ..service = (name, func)->
        func |> load |> service name, _
@@ -78,8 +80,7 @@ $new = ->
      ..object = (name, o)->
        object name, o
        xonom
-     ..eval = (f)->
-       load f
+     ..eval = load
      ..$new = $new
     xonom.object \$xonom, xonom
     xonom

@@ -102,6 +102,11 @@
     };
     xonom = {};
     x$ = xonom;
+    x$.require = function(path){
+      return load(
+      require(
+      path));
+    };
     x$.run = function(f){
       load(f);
       return xonom;
@@ -115,9 +120,7 @@
       object(name, o);
       return xonom;
     };
-    x$.eval = function(f){
-      return load(f);
-    };
+    x$.eval = load;
     x$.$new = $new;
     xonom.object('$xonom', xonom);
     return xonom;
