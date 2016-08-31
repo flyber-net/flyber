@@ -12,81 +12,79 @@ params = (func)->
   else
     result
 
-services = []
-
-register = (name)->
-  return if services.index-of(name)>-1
-  o = -> 
-     o.$get?apply?(o, arguments)
-  services.push [name, o]
-  name
-
-transform = (name)->
-  services |> p.find (.0 is name) |> (.1)
-
-const load-string = (str)->
-    if str.index-of(\*) > -1
-        require(\glob).sync(str).for-each load
-    else 
-       str |> require |> load
-
-const load = (any)->
-   | typeof! any is \Function => any |> params |> p.each register |> p.map transform |> any.apply @, _
-   | typeof! any is \String => any |> load-string
-   | _ => any
-
-const clone-service = (obj, copy)->
-    switch typeof! obj
-      case \Object
-        clone-object obj, copy
-      case \Function
-        copy.$get = obj
-
-const clone = (obj, copy, attr)->
-    switch typeof! obj[attr]
-        case \Function
-          copy[attr] = ->
-            obj[attr].apply obj, arguments
+$new = ->
+    
+    services = []
+    
+    register = (name)->
+      return if services.index-of(name)>-1
+      o = -> 
+         o.$get?apply?(o, arguments)
+      services.push [name, o]
+      name
+    
+    transform = (name)->
+      services |> p.find (.0 is name) |> (.1)
+    
+    load-string = (str)->
+        if str.index-of(\*) > -1
+            require(\glob).sync(str).for-each load
         else 
-          copy[attr] = obj[attr]
+           str |> require |> load
+    
+    load = (any)->
+       | typeof! any is \Function => any |> params |> p.each register |> p.map transform |> any.apply @, _
+       | typeof! any is \String => any |> load-string
+       | _ => any
+    
+    clone-service = (obj, copy)->
+        switch typeof! obj
+          case \Object
+            clone-object obj, copy
+          case \Function
+            copy.$get = obj
+    
+    clone = (obj, copy, attr)->
+        switch typeof! obj[attr]
+            case \Function
+              copy[attr] = ->
+                obj[attr].apply obj, arguments
+            else 
+              copy[attr] = obj[attr]
+    
+    clone-object = (obj, copy)->
+        for attr of obj
+          clone obj, copy, attr
+          
+    
+    object = (name, object)->
+       pub =
+          name |> register |> transform
+       clone-object object, pub
+    
+    service = (name, object)->
+       pub =
+          name |> register |> transform
+       clone-service object, pub
+    xonom =  {}
+    
+    xonom
+     ..run = (f)->
+       load(f)
+       xonom
+     ..service = (name, func)->
+       func |> load |> service name, _
+       xonom
+     ..object = (name, o)->
+       object name, o
+       xonom
+     ..eval = (f)->
+       load f
+     ..$new = $new
+    xonom.object \$xonom, xonom
+    xonom
 
-const clone-object = (obj, copy)->
-    for attr of obj
-      clone obj, copy, attr
-      
-
-const object = (name, object)->
-   const pub =
-      name |> register |> transform
-   clone-object object, pub
-
-const service = (name, object)->
-   const pub =
-      name |> register |> transform
-   clone-service object, pub
-
-
-
-const xonom =  {}
-xonom
- ..require = (path)->
-   path |> require |> load
- ..run = (f)->
-   load(f)
-   xonom
- ..eval = (f)->
-   load f
- ..service = (name, func)->
-   func |> load |> service name, _
-   xonom
- ..object = (name, o)->
-   object name, o
-   xonom
-
-xonom.object \$xonom, xonom
-
-
-module.exports = xonom
+module.exports = $new!
     
 
     
