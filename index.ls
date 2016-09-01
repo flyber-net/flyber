@@ -69,7 +69,9 @@ $new = ->
     xonom =  {}
     
     xonom
-     ..registry = registry
+     ..registry =
+         names: registry |> p.obj-to-pairs |> p.map (.0)
+         item: transform 
      ..require = (path)->
        path |> require |> load
      ..run = (f)->

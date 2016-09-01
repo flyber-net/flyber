@@ -96,7 +96,14 @@
     };
     xonom = {};
     x$ = xonom;
-    x$.registry = registry;
+    x$.registry = {
+      names: p.map(function(it){
+        return it[0];
+      })(
+      p.objToPairs(
+      registry)),
+      item: transform
+    };
     x$.require = function(path){
       return load(
       require(
