@@ -17,10 +17,10 @@ $new = ->
     services = {}
     
     register = (name)->
-      return if services[name]?
+      return name if services[name]?
       o = -> 
          o.$get?apply?(o, arguments)
-      services[name] =o
+      services[name] = o
       name
     
     transform = (name)->

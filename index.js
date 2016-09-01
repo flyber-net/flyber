@@ -20,7 +20,7 @@
     register = function(name){
       var o;
       if (services[name] != null) {
-        return;
+        return name;
       }
       o = function(){
         var ref$;
