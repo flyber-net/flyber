@@ -97,7 +97,9 @@
     xonom = {};
     extract = function(item){
       if (item != null) {
-        return transform(item);
+        return p.objToPairs(
+        transform(
+        item));
       } else {
         return p.map(function(it){
           return it[0];
