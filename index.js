@@ -16,27 +16,21 @@
   };
   $new = function(){
     var services, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
-    services = [];
+    services = {};
     register = function(name){
       var o;
-      if (services.indexOf(name) > -1) {
+      if (services[name] != null) {
         return;
       }
       o = function(){
         var ref$;
         return (ref$ = o.$get) != null ? typeof ref$.apply == 'function' ? ref$.apply(o, arguments) : void 8 : void 8;
       };
-      services.push([name, o]);
+      services[name] = o;
       return name;
     };
     transform = function(name){
-      return function(it){
-        return it[1];
-      }(
-      p.find(function(it){
-        return it[0] === name;
-      })(
-      services));
+      return services[name];
     };
     loadString = function(str){
       if (str.indexOf('*') > -1) {

@@ -14,17 +14,17 @@ params = (func)->
 
 $new = ->
     
-    services = []
+    services = {}
     
     register = (name)->
-      return if services.index-of(name)>-1
+      return if services[name]?
       o = -> 
          o.$get?apply?(o, arguments)
-      services.push [name, o]
+      services[name] =o
       name
     
     transform = (name)->
-      services |> p.find (.0 is name) |> (.1)
+      services[name]
     
     load-string = (str)->
         if str.index-of(\*) > -1
@@ -69,7 +69,6 @@ $new = ->
     xonom =  {}
     
     xonom
-     
      ..require = (path)->
        path |> require |> load
      ..run = (f)->
