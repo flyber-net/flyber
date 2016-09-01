@@ -15,28 +15,22 @@
     }
   };
   $new = function(){
-    var services, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
-    services = [];
+    var registered, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
+    registered = {};
     register = function(name){
       var o;
-      if (services.indexOf(name) > -1) {
+      if (registered[name] != null) {
         return;
       }
       o = function(){
         var ref$;
         return (ref$ = o.$get) != null ? typeof ref$.apply == 'function' ? ref$.apply(o, arguments) : void 8 : void 8;
       };
-      services.push([name, o]);
+      registered[name] = o;
       return name;
     };
     transform = function(name){
-      return function(it){
-        return it[1];
-      }(
-      p.find(function(it){
-        return it[0] === name;
-      })(
-      services));
+      return registered[name];
     };
     loadString = function(str){
       if (str.indexOf('*') > -1) {
@@ -102,8 +96,13 @@
     };
     xonom = {};
     x$ = xonom;
-    x$.state = {
-      registered: services
+    x$.registered = {
+      names: p.map(function(it){
+        return it[0];
+      })(
+      p.objToPairs(
+      registered)),
+      get: transform
     };
     x$.require = function(path){
       return load(
