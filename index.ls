@@ -69,6 +69,8 @@ $new = ->
     xonom =  {}
     
     xonom
+     ..state =
+         registered: services
      ..require = (path)->
        path |> require |> load
      ..run = (f)->

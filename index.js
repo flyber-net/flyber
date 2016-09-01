@@ -102,6 +102,9 @@
     };
     xonom = {};
     x$ = xonom;
+    x$.state = {
+      registered: services
+    };
     x$.require = function(path){
       return load(
       require(
