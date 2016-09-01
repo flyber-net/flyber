@@ -70,7 +70,7 @@ $new = ->
     
     extract = (item)->
      if item? 
-       item |> transform |> p.obj-to-pairs
+       item |> transform |> p.obj-to-pairs |> p.pairs-to-obj
      else 
        registry |> p.obj-to-pairs |> p.map (.0)
     
