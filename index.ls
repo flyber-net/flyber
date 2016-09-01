@@ -68,10 +68,14 @@ $new = ->
        clone-service object, pub
     xonom =  {}
     
+    extract = (item)->
+     if item? 
+       transform item 
+     else 
+       registry |> p.obj-to-pairs |> p.map (.0)
+    
     xonom
-     ..registry =
-         names: registry |> p.obj-to-pairs |> p.map (.0)
-         item: transform 
+     ..registry = extract
      ..require = (path)->
        path |> require |> load
      ..run = (f)->

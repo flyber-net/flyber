@@ -15,7 +15,7 @@
     }
   };
   $new = function(){
-    var registry, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
+    var registry, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, extract, x$;
     registry = {};
     register = function(name){
       var o;
@@ -95,15 +95,19 @@
       return cloneService(object, pub);
     };
     xonom = {};
-    x$ = xonom;
-    x$.registry = {
-      names: p.map(function(it){
-        return it[0];
-      })(
-      p.objToPairs(
-      registry)),
-      item: transform
+    extract = function(item){
+      if (item != null) {
+        return transform(item);
+      } else {
+        return p.map(function(it){
+          return it[0];
+        })(
+        p.objToPairs(
+        registry));
+      }
     };
+    x$ = xonom;
+    x$.registry = extract;
     x$.require = function(path){
       return load(
       require(
