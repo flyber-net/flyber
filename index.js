@@ -15,22 +15,22 @@
     }
   };
   $new = function(){
-    var services, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
-    services = {};
+    var registry, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, x$;
+    registry = {};
     register = function(name){
       var o;
-      if (services[name] != null) {
+      if (registry[name] != null) {
         return name;
       }
       o = function(){
         var ref$;
         return (ref$ = o.$get) != null ? typeof ref$.apply == 'function' ? ref$.apply(o, arguments) : void 8 : void 8;
       };
-      services[name] = o;
+      registry[name] = o;
       return name;
     };
     transform = function(name){
-      return services[name];
+      return registry[name];
     };
     loadString = function(str){
       if (str.indexOf('*') > -1) {
@@ -96,6 +96,7 @@
     };
     xonom = {};
     x$ = xonom;
+    x$.registry = registry;
     x$.require = function(path){
       return load(
       require(
