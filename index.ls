@@ -4,7 +4,12 @@ const p =
 STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
 ARGUMENT_NAMES = /([^\s,]+)/g
 
+native_func = "function () { [native code] }"
+
 params = (func)->
+  current = func.toString!
+  if current is native_func
+    throw "Native Function by Xonom is not supported. Please use configuration of injections instead: { inject: ['service1', 'service2'], func: func }"
   const fnStr = func.toString!.replace(STRIP_COMMENTS, '')
   const result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES)
   if result is null
@@ -33,6 +38,7 @@ $new = ->
            str |> require |> load
     
     load = (any)->
+       | typeof! any is \Object => any.inject |> p.each register |> p.map transform |> any.func.apply @, _
        | typeof! any is \Function => any |> params |> p.each register |> p.map transform |> any.apply @, _
        | typeof! any is \String => any |> load-string
        | _ => any
