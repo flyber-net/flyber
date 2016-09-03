@@ -38,6 +38,7 @@ $new = ->
            str |> require |> load
     
     load = (any)->
+       | typeof! any is \Array => any |> p.map load
        | typeof! any is \Object => any.inject |> p.each register |> p.map transform |> any.func.apply @, _
        | typeof! any is \Function => any |> params |> p.each register |> p.map transform |> any.apply @, _
        | typeof! any is \String => any |> load-string

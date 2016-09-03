@@ -48,6 +48,9 @@
     };
     load = function(any){
       switch (false) {
+      case toString$.call(any).slice(8, -1) !== 'Array':
+        return p.map(load)(
+        any);
       case toString$.call(any).slice(8, -1) !== 'Object':
         return any.func.apply(this, p.map(transform)(
         p.each(register)(
