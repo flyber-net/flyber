@@ -1,4 +1,4 @@
-# xonom
+# Flyber
 AngularJS service model for nodejs
 
 keywords: node-angular, angularjs-nodejs
@@ -6,7 +6,7 @@ keywords: node-angular, angularjs-nodejs
 ##Install
 
 ```Bash
-npm install xonom
+npm install flyber
 ```
 
 ##Motivation
@@ -26,16 +26,16 @@ require('../config.json')
 
 ```Javascript 
 
-var func = function ($xonom) {
+var func = function ($flyber) {
   
-  $xonom.service("myservice", function() {
+  $flyber.service("myservice", function() {
       return {
          func1: function() {  console.log("print1"); },
          func2: function() {  console.log("print2"); }
       }
   });
   
-  $xonom.run(function(myservice, config) {
+  $flyber.run(function(myservice, config) {
   
       myservice.func1() //==> print1
       myservice.func2() //==> print2
@@ -48,19 +48,19 @@ var func = function ($xonom) {
 
 
 
-var xonom = require('xonom');
+var flyber = require('flyber');
 
-//Add object to xonom
-xonom.object('config', { common: 'object' });
+//Add object to flyber
+flyber.object('config', { common: 'object' });
 
-//Apply xonom to function
-xonom.run(func)
+//Apply flyber to function
+flyber.run(func)
 
 
 
 //Or put javascript in files
-xonom.require('./config.js');
-xonom.require('./myservice.js');
+flyber.require('./config.js');
+flyber.require('./myservice.js');
 
 ```
 
