@@ -9,7 +9,7 @@ native_func = "function () { [native code] }"
 params = (func)->
   current = func.toString!
   if current is native_func
-    throw "Native Function by Xonom is not supported. Please use configuration of injections instead: { inject: ['service1', 'service2'], func: func }"
+    throw "Native Function by Flyber is not supported. Please use configuration of injections instead: { inject: ['service1', 'service2'], func: func }"
   const fnStr = func.toString!.replace(STRIP_COMMENTS, '')
   const result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES)
   if result is null
@@ -73,7 +73,7 @@ $new = ->
        pub =
           name |> register |> transform
        clone-service object, pub
-    xonom =  {}
+    flyber =  {}
     
     extract = (item)->
      if item? 
@@ -81,23 +81,23 @@ $new = ->
      else 
        registry |> p.obj-to-pairs |> p.map (.0)
     
-    xonom
+    flyber
      ..registry = extract
      ..require = (path)->
        path |> require |> load
      ..run = (f)->
        load f
-       xonom
+       flyber
      ..service = (name, func)->
        func |> load |> service name, _
-       xonom
+       flyber
      ..object = (name, o)->
        object name, o
-       xonom
+       flyber
      ..eval = load
      ..$new = $new
-    xonom.object \$xonom, xonom
-    xonom
+    flyber.object \$flyber, flyber
+    flyber
 
 module.exports = $new!
     

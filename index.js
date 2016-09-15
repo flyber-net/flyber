@@ -9,7 +9,7 @@
     var current, fnStr, result;
     current = func.toString();
     if (current === native_func) {
-      throw "Native Function by Xonom is not supported. Please use configuration of injections instead: { inject: ['service1', 'service2'], func: func }";
+      throw "Native Function by Flyber is not supported. Please use configuration of injections instead: { inject: ['service1', 'service2'], func: func }";
     }
     fnStr = func.toString().replace(STRIP_COMMENTS, '');
     result = fnStr.slice(fnStr.indexOf('(') + 1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
@@ -20,7 +20,7 @@
     }
   };
   $new = function(){
-    var registry, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, xonom, extract, x$;
+    var registry, register, transform, loadString, load, cloneService, clone, cloneObject, object, service, flyber, extract, x$;
     registry = {};
     register = function(name){
       var o;
@@ -106,7 +106,7 @@
       name));
       return cloneService(object, pub);
     };
-    xonom = {};
+    flyber = {};
     extract = function(item){
       if (item != null) {
         return p.pairsToObj(
@@ -121,7 +121,7 @@
         registry));
       }
     };
-    x$ = xonom;
+    x$ = flyber;
     x$.registry = extract;
     x$.require = function(path){
       return load(
@@ -130,21 +130,21 @@
     };
     x$.run = function(f){
       load(f);
-      return xonom;
+      return flyber;
     };
     x$.service = function(name, func){
       service(name, load(
       func));
-      return xonom;
+      return flyber;
     };
     x$.object = function(name, o){
       object(name, o);
-      return xonom;
+      return flyber;
     };
     x$.eval = load;
     x$.$new = $new;
-    xonom.object('$xonom', xonom);
-    return xonom;
+    flyber.object('$flyber', flyber);
+    return flyber;
   };
   module.exports = $new();
 }).call(this);
