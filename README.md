@@ -22,6 +22,8 @@ require('../config.json')
 ...
 
 ```
+Actually it is false. the motivation is only one. I love AngularJS design and want to reuse it in Nodejs
+
 
 ##EXAMPLE
 
@@ -62,7 +64,7 @@ flyber.run(func)
 
 //Or put javascript in files
 flyber.require('./config.js');
-flyber.require('./myservice.js');
+flyber.require('../*.js');
 
 ```
 
